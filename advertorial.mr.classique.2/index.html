@@ -295,9 +295,8 @@ src="https://www.facebook.com/tr?id=686832250940453&ev=PageView&noscript=1"
           triggered[point] = true;
 
           // Evento personalizado do Facebook Pixel
-          fbq('trackCustom', 'ScrollDepth', {
-            depth: point + '%'
-          });
+         fbq('trackCustom', 'Scroll' + point);
+
 
           // (Opcional) Log para debug
           console.log('ScrollDepth enviado:', point + '%');
