@@ -270,5 +270,42 @@ src="https://www.facebook.com/tr?id=686832250940453&ev=PageView&noscript=1"
       </a>
     </div>
   </div>
+   <script>
+  (function() {
+    let scrollPoints = [25, 50, 75, 100];
+    let triggered = {};
+
+    function getScrollPercent() {
+      const scrollTop = window.scrollY || document.documentElement.scrollTop;
+      const docHeight = Math.max(
+        document.body.scrollHeight, document.documentElement.scrollHeight,
+        document.body.offsetHeight, document.documentElement.offsetHeight,
+        document.body.clientHeight, document.documentElement.clientHeight
+      );
+      const winHeight = window.innerHeight || document.documentElement.clientHeight;
+      const scrollableHeight = docHeight - winHeight;
+      return (scrollTop / scrollableHeight) * 100;
+    }
+
+    window.addEventListener('scroll', function() {
+      const percent = getScrollPercent();
+
+      scrollPoints.forEach(function(point) {
+        if (percent >= point && !triggered[point]) {
+          triggered[point] = true;
+
+          // Evento personalizado do Facebook Pixel
+          fbq('trackCustom', 'ScrollDepth', {
+            depth: point + '%'
+          });
+
+          // (Opcional) Log para debug
+          console.log('ScrollDepth enviado:', point + '%');
+        }
+      });
+    });
+  })();
+</script>
+
 </body>
 </html>
