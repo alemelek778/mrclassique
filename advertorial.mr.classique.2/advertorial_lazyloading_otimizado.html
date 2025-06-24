@@ -1,0 +1,146 @@
+
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Interruptor da Mente – Advertorial</title>
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+    body {
+      font-family: Arial, sans-serif;
+      line-height: 1.6;
+      margin: 0;
+      padding: 0;
+      color: #222;
+      background-color: #fff;
+    }
+    .container {
+      max-width: 750px;
+      width: 100%;
+      margin: 40px auto;
+      padding: 0 20px;
+    }
+    h1 {
+      font-size: 26px;
+      font-weight: bold;
+      margin-bottom: 10px;
+    }
+    h2 {
+      font-size: 20px;
+      font-weight: bold;
+      color: #000;
+      margin-top: 35px;
+      margin-bottom: 10px;
+    }
+    p {
+      margin-bottom: 16px;
+    }
+    .highlight-box {
+      background: #f9f9f9;
+      border-left: 4px solid #ccc;
+      padding: 10px 15px;
+      margin: 20px 0;
+      font-style: italic;
+    }
+    ul {
+      list-style-type: none;
+      padding-left: 0;
+    }
+    ul li::before {
+      content: "✅ ";
+    }
+    img {
+      max-width: 100%;
+      height: auto;
+      display: block;
+      margin: 20px 0;
+    }
+    .cta-button {
+      display: inline-block;
+      background-color: #28a745;
+      color: white;
+      padding: 14px 22px;
+      margin-top: 30px;
+      text-align: center;
+      text-decoration: none;
+      font-weight: bold;
+      font-size: 16px;
+      border-radius: 8px;
+      width: 100%;
+      max-width: 300px;
+    }
+    .center {
+      text-align: center;
+    }
+  </style>
+
+  <script>
+    // Lazy load do Facebook Pixel
+    window.requestIdleCallback(() => {
+      !function(f,b,e,v,n,t,s)
+      {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+      n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+      if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+      n.queue=[];t=b.createElement(e);t.async=!0;
+      t.src=v;s=b.getElementsByTagName(e)[0];
+      s.parentNode.insertBefore(t,s)}(window, document,'script',
+      'https://connect.facebook.net/en_US/fbevents.js');
+      fbq('init', '686832250940453');
+      fbq('track', 'PageView');
+    });
+
+    // Lazy load do Clarity
+    window.requestIdleCallback(() => {
+      (function(c,l,a,r,i,t,y){
+          c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+          t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+          y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+      })(window, document, "clarity", "script", "rwwsv4kfqk");
+    });
+  </script>
+
+  <noscript>
+    <img height="1" width="1" style="display:none"
+         loading="lazy"
+         src="https://www.facebook.com/tr?id=686832250940453&ev=PageView&noscript=1"/>
+  </noscript>
+</head>
+<body>
+  <div class="container">
+    <!-- Coloque aqui o conteúdo do advertorial completo -->
+    <img src="./css2/147para75.png" alt="Antes e depois" loading="lazy">
+    <!-- ... restante do conteúdo do advertorial ... -->
+  </div>
+
+  <script>
+    (function() {
+      let scrollPoints = [25, 50, 75, 100];
+      let triggered = {};
+      function getScrollPercent() {
+        const scrollTop = window.scrollY || document.documentElement.scrollTop;
+        const docHeight = Math.max(
+          document.body.scrollHeight, document.documentElement.scrollHeight,
+          document.body.offsetHeight, document.documentElement.offsetHeight,
+          document.body.clientHeight, document.documentElement.clientHeight
+        );
+        const winHeight = window.innerHeight || document.documentElement.clientHeight;
+        const scrollableHeight = docHeight - winHeight;
+        return (scrollTop / scrollableHeight) * 100;
+      }
+      window.addEventListener('scroll', function() {
+        const percent = getScrollPercent();
+        scrollPoints.forEach(function(point) {
+          if (percent >= point && !triggered[point]) {
+            triggered[point] = true;
+            fbq('trackCustom', 'Scroll' + point);
+            console.log('ScrollDepth enviado:', point + '%');
+          }
+        });
+      });
+    })();
+  </script>
+</body>
+</html>
